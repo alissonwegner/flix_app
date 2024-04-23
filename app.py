@@ -4,6 +4,9 @@ from actors.page import show_actores
 from login.page import show_login
 
 
+if 'key' not in st.session_state:
+    st.session_state.key = None
+
 def main():
     if 'token' not in st.session_state:
         show_login()
