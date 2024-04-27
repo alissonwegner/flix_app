@@ -4,16 +4,16 @@ from datetime import datetime
 import pandas as pd
 from actors.services import ActorsService
 from genres.services import GenreService
-from movies.services import MoviesService
+from movies.services import MovieService
 
 def show_movies():
-    movie_service = MoviesService()
-    movie = movie_service.get_movies()
+    movie_service = MovieService()
+    movies = movie_service.get_movies()
 
-    if movie:
+    if movies:
         st.write('Lista de filmes')
-        movies_df = pd.json_normalize(movie)
-        movies_df - movies_df.drop(columns=['actors', 'genre.id'])
+        movies_df = pd.json_normalize(movies)
+        movies_df = movies_df.drop(columns=['actors', 'genre.id'])
         AgGrid(
             data=movies_df,
             reload_data=True,

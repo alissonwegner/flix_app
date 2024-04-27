@@ -24,11 +24,11 @@ class ReviewRepository:
         raise Exception(f'Erro ao obter dados da API. Status code: {response.status_code}')
     
 
-    def create_reviews(self, reviews):
+    def create_review(self, review):
         response = requests.post(
             self.__reviews_url,
             headers=self.__headers,
-            data=reviews,
+            data=review,
         )
         if response.status_code == 201:
             return response.json()
